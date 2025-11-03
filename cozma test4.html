@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>متجر كوزما – باكجات الأمن السيبراني</title>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --card: #111119;
+      --accent: #ff003c;
+      --text: #f5f5f5;
+      --muted: #a7a7b3;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+    body { margin: 0; background: radial-gradient(circle at top, #161629 0%, #06060a 60%, #040406 100%); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; }
+    header { backdrop-filter: blur(10px); background: rgba(5,5,7,0.6); border-bottom: 1px solid rgba(255,255,255,0.03); position: sticky; top:0; z-index:10; }
+    .nav { max-width:1100px; margin:0 auto; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; gap:14px; }
+    .logo { display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:0.05em; }
+    .logo-badge { width:34px; height:34px; border-radius:12px; background: radial-gradient(circle, rgba(255,0,60,1) 0%, rgba(255,0,60,0.05) 80%); display:grid; place-items:center; font-size:13px; font-weight:800; }
+
+    .hero { max-width:1100px; margin:28px auto 10px; padding:0 16px; display:grid; grid-template-columns:1.1fr 0.9fr; gap:22px; }
+    .hero-text h1 { font-size:clamp(28px,4vw,36px); line-height:1.1; margin-bottom:14px; }
+    .hero-text p { color:var(--muted); margin-bottom:18px; }
+    .btn-primary { background: linear-gradient(135deg, #ff003c 0%, #ff4585 100%); border:none; border-radius:12px; color:#fff; font-weight:600; padding:12px 24px; cursor:pointer; }
+
+    .hero-panel { background: rgba(11,11,18,0.45); border:1px solid rgba(255,0,60,0.2); border-radius:var(--radius); padding:18px 20px 14px; display:flex; flex-direction:column; gap:14px; }
+    .qr-box { border:1px dashed rgba(255,255,255,0.08); border-radius:14px; padding:12px; display:flex; align-items:center; gap:14px; }
+    .qr-img { width:90px; height:90px; background: repeating-linear-gradient(45deg, #0a0a0f 0 10px, #1f1f2b 10px 20px); border-radius:12px; display:grid; place-items:center; font-size:11px; text-align:center; color:#aaa; }
+    .small { font-size:12px; color:var(--muted); }
+
+    .plans { max-width:1100px; margin:16px auto 8px; padding:0 16px; display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:16px; }
+    .plan-card { background: rgba(10,10,13,0.45); border:1px solid rgba(255,255,255,0.01); border-radius:14px; padding:12px; display:flex; flex-direction:column; gap:10px; position:relative; }
+    .plan-card.highlight { border:1px solid rgba(255,0,60,0.4); background: radial-gradient(circle at top, rgba(255,0,60,0.08) 0%, rgba(0,0,0,0) 50%); box-shadow:0 12px 25px rgba(255,0,60,0.12); }
+    .plan-title { font-weight:600; }
+    .price { font-size:20px; font-weight:700; }
+    ul.features { margin:0; padding:0 18px 0 0; color:var(--muted); font-size:13px; line-height:1.5; }
+    .btn-telegram { background: rgba(0,136,204,0.12); color:#fff; border:1px solid rgba(0,136,204,0.4); border-radius:10px; padding:9px 10px; font-size:13px; cursor:pointer; display:inline-flex; align-items:center; gap:6px; text-decoration:none; width:fit-content; }
+    .badge-top { position:absolute; top:-9px; right:14px; background:#ff003c; color:#fff; font-size:11px; padding:3px 9px 4px; border-radius:999px; font-weight:600; }
+
+    /* image styles */
+    .plan-img { width:100%; height:140px; object-fit:cover; border-radius:10px; border:1px solid rgba(255,255,255,0.03); }
+    .plan-thumb { width:64px; height:64px; border-radius:10px; object-fit:cover; border:1px solid rgba(255,255,255,0.04); }
+
+    .content-section { max-width:1100px; margin:10px auto 24px; padding:0 16px; display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+    .content-box { background: rgba(6,6,8,0.35); border:1px solid rgba(255,255,255,0.01); border-radius:14px; padding:14px 16px 14px; }
+    .content-box h3 { margin-top:0; margin-bottom:8px; }
+    .content-box ul { margin:0; padding-right:18px; line-height:1.6; font-size:13px; }
+
+    /* gallery inside content box */
+    .media-grid { display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; margin-top:10px; }
+    .media-grid img { width:100%; height:120px; object-fit:cover; border-radius:10px; border:1px solid rgba(255,255,255,0.03); }
+
+    footer { text-align:center; padding:20px 16px 28px; color:var(--muted); font-size:12px; }
+    .cta-share { font-size:12px; color:#fff; margin-top:8px; }
+
+    @media (max-width:880px) { .hero { grid-template-columns:1fr; } .hero-panel { order:-1; } .content-section { grid-template-columns:1fr; } .media-grid { grid-template-columns: repeat(2, 1fr); } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-badge">C</div>
+        <div>
+          متجر كوزما
+          <div style="font-size:11px;color:var(--muted);">منتجات رقمية للأمن السيبراني</div>
+        </div>
+      </div>
+      <!-- غيّر اليوزر هون -->
+      <a href="https://t.me/YOUR_TELEGRAM_USERNAME" class="btn-telegram">اطلب عبر تيليجرام</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-text">
+        <h1>باكجات الأمن السيبراني – من المبتدئ للمحترف 🔐</h1>
+        <p>هاي الصفحة لعرض المنتجات فقط. الطلب والدفع رح يكونوا عالتلغرام عن طريق <b>Cozma Method</b> أو USDT. اضغط على الباكج يلي بدك ياه ورح يفتح معك التلغرام برسالة جاهزة.</p>
+        <button class="btn-primary" onclick="goTelegram()">اطلب الآن على تيليجرام</button>
+      </div>
+      <div class="hero-panel">
+        <h3>الدفع عبر USDT (Cozma Method)</h3>
+        <p class="small">حوّل المبلغ على المحفظة أدناه، وبعد التأكيد من التحويل رح يوصلك رابط التحميل أو بنضيفك على القناة الخاصة.</p>
+        <div class="qr-box">
+          <div class="qr-img">QR<br/>هنا</div>
+          <div>
+            <div style="font-size:13px;">محفظة USDT (TRC20)</div>
+            <div style="font-size:11px;word-break:break-all;">TXR1y0uRPlaCeY0urWalLetAddreSSHere</div>
+            <div class="small">بعد التحويل ابعت سكرين للتأكيد على التلغرام.</div>
+          </div>
+        </div>
+        <p class="small">* الدفع عبر PayPal → رح نحولك على Gumroad.</p>
+      </div>
+    </section>
+
+    <section class="plans">
+      <div class="plan-card">
+        <img src="C:\Users\DELL\Desktop\cy project\ChatGPT Image 16 أكتوبر 2025، 04_25_51 ص.png"alt="Basic pack" class="plan-img" />
+        <div class="plan-title">الباكج الأساسي</div>
+        <div class="small">المسار التعليمي الأساسي + الرودماب</div>
+        <div class="price">40 USDT</div>
+        <ul class="features">
+          <li>دليل تعلم الأمن السيبراني (5 مستويات)</li>
+          <li>خريطة تعلم Cybersecurity Roadmap</li>
+          <li>أوامر كالي الأساسية + التشغيل</li>
+          <li>استخدام قانوني وأخلاقي</li>
+        </ul>
+        <a href="https://t.me/YOUR_TELEGRAM_USERNAME?text=السلام%20عليكم%20📦%20أريد%20شراء%20الباكج%20الأساسي%20(40%20USDT)" class="btn-telegram">اطلب الباكج الأساسي</a>
+      </div>
+
+      <div class="plan-card highlight">
+        <div class="badge-top">الأكثر طلباً</div>
+        <img src="C:\Users\DELL\Desktop\cy project\6fe726ab-08aa-4068-8b1f-414356f87375.png" alt="Pro pack" class="plan-img" />
+        <div class="plan-title">الباكج الشامل (Pro)</div>
+        <div class="small">كل الكتيبات + أدوات + سكربتات + قناة خاصة</div>
+        <div class="price">💰 100 USDT</div>
+        <ul class="features">
+          <li>كل محتوى الباكج الأساسي</li>
+          <li>كتيّب أدوات الريد تيم (داخل وخارج كالي)</li>
+          <li>سكربتات جاهزة (Bash / Python) للت automatisation</li>
+          <li>ملفات كبيرة يتم تنزيلها من القناة الخاصة</li>
+        </ul>
+        <a href="https://t.me/YOUR_TELEGRAM_USERNAME?text=السلام%20عليكم%20🔥%20أريد%20شراء%20الباكج%20الشامل%20(Pro)%20بسعر%20100%20USDT" class="btn-telegram">اطلب الباكج الشامل</a>
+      </div>
+
+      <div class="plan-card">
+        <img src="C:\Users\DELL\Desktop\cy project\ChatGPT Image 1 نوفمبر 2025، 04_42_47 ص.png" alt="Manual" class="plan-img" />
+        <div class="plan-title">دفع يدوي</div>
+        <div class="small">للدول اللي فيها قيود</div>
+        <div class="price">حسب الطلب</div>
+        <ul class="features">
+          <li>تحويل عبر Cozma Method</li>
+          <li>تأكيد يدوي على التلغرام</li>
+          <li>إضافة للقناة بعد التحويل</li>
+        </ul>
+        <a href="https://t.me/YOUR_TELEGRAM_USERNAME?text=مرحبا%20👋%20أريد%20الدفع%20يدوياً%20(بسبب%20قيود%20الدفع)" class="btn-telegram">تواصل الآن</a>
+      </div>
+    </section>
+
+    <!-- محتويات الباكجات -->
+    <section class="content-section">
+      <div class="content-box">
+        <h3>📦 محتويات الباكج الأساسي</h3>
+        <ul>
+          <li>دليل تعلم أساسيات الأمن السيبراني – 5 مستويات (مبتدئ → متقدم).</li>
+          <li>المستوى 5: دخول لعالم الـ Red Hacker بأسلوب قانوني.</li>
+          <li>خريطة تعلم (Cybersecurity Roadmap) مرتبة مراحل + مواضيع + أدوات.</li>
+          <li>كتيّب “أدوات كالي لينكس الأساسية” + أوامر التيرمنال.</li>
+          <li>قائمة مصادر مجانية (دورات، قنوات يوتيوب، مواقع تدريب).</li>
+          <li>تنبيهات قانونية وأخلاقيات الأمن السيبراني.</li>
+        </ul>
+
+        <div class="media-grid">
+          <img src="basic-1.jpg" alt="basic page 1">
+          <img src="basic-2.jpg" alt="basic page 2">
+          <img src="basic-3.jpg" alt="basic page 3">
+          <img src="basic-4.jpg" alt="basic page 4">
+        </div>
+      </div>
+
+      <div class="content-box">
+        <h3>🔥 محتويات الباكج الشامل (Pro)</h3>
+        <ul>
+          <li>كل ما في الباكج الأساسي.</li>
+          <li>كتيّب أدوات الـ Red Team داخل كالي وخارجها.</li>
+          <li>سكربتات عملية (Bash / Python) لأتمتة بعض المهام الأمنية.</li>
+          <li>قوالب تقارير (Pentest Report / Security Policy) جاهزة للتعديل.</li>
+          <li>دليل “Cozma Method” لاستقبال المدفوعات بالكريبتو.</li>
+          <li>ملفات وبرامج حجمها كبير → يتم رفعها على قناة تيليجرام خاصة بالمشترين.</li>
+          <li>قسم الأدوات الحساسة / التجارب المتقدمة (تضيفه أنت يدويًا في القناة).</li>
+        </ul>
+
+        <div class="media-grid">
+          <img src="pro-1.jpg" alt="pro sample 1">
+          <img src="pro-2.jpg" alt="pro sample 2">
+          <img src="pro-3.jpg" alt="pro sample 3">
+          <img src="pro-4.jpg" alt="pro sample 4">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© 2025 متجر كوزما – منتجات رقمية للأمن السيبراني.</div>
+    <div class="cta-share">لا تنسوا الاشتراك بالقناة ومشاركة الصفحة على منصات التواصل الاجتماعي 🔁</div>
+  </footer>
+
+  <script>
+    function goTelegram() {
+      window.location.href = "https://t.me/YOUR_TELEGRAM_USERNAME?text=السلام%20عليكم%20👋%20عندي%20استفسار%20عن%20باكجات%20الأمن%20السيبراني";
+    }
+  </script>
+</body>
+</html>
